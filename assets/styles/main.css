@@ -1,0 +1,11 @@
+body p {
+    color: aqua;
+    font-size: 50px;
+}
+
+@media (min-width:769px) {
+    body p {
+        color: blue;
+        font-size: 10px;
+    }
+}
