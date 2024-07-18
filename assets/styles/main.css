@@ -1,11 +1,177 @@
-body p {
-    color: aqua;
-    font-size: 50px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --mainfont: "Noto Sans JP", sans-serif;
+    --subfont: "Noto Serif", serif;
+}
+body {
+    font-family: var(--mainfont);
+
+    display: grid;
+    grid-template-columns: 3fr 13fr;
+    grid-template-areas: 
+        "aside main";
+    height: 1000vh;
+    background-color: gray;
 }
 
-@media (min-width:769px) {
-    body p {
-        color: blue;
-        font-size: 10px;
+.aikon {
+    display: block;
+    justify-content: center;
+    align-content: center;
+    width: 20vw;
+    height: 20vw;
+}
+
+aside {
+    grid-area: aside;
+    background-color: darkcyan;
+}
+
+
+
+nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+}
+
+nav ul li a {
+    color: white;
+    display: block;
+    font-size: 100px;
+    padding: 10px;
+    text-decoration-thickness: 1px; /* 下線の太さを指定 */
+    text-underline-offset: 5px;
+}
+
+nav ul p {
+    font-size: 80px;
+    color: white;
+    padding: 5px 0 15px 0;
+}
+
+
+@media (max-width: 767px) {
+    body {
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "aside"
+            "main";
     }
+
+    #hmb {
+        position: fixed;
+        top: 30px;
+        right: 100px;
+        display: block;
+        cursor: pointer; /* 指マークになる */
+        z-index: 30;
+    }
+    
+    #hmb span {
+        width: 50px;
+        height: 5px;
+        display: block;
+        margin: 12px 16px;
+        background-color: white;
+        position: absolute;
+        transition: .2s;   
+    }
+    
+    #hmb span:first-child { /* 一つ目のspanだけCSS適用 */
+        top: 0;
+    }
+    
+    #hmb span:nth-child(2) { /* 二つ目のspanだけCSS適用 */
+        top: 14px;
+    }
+    
+    #hmb span:nth-child(3) { /* 三つ目のspanだけCSS適用 */
+        top: 28px;
+    }
+    /* アクティブ */
+    .active #hmb span:first-child {
+        top: 12px;
+        transform: rotate(45deg);
+    }
+
+    .active #hmb span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .active #hmb span:nth-child(3) {
+        top: 12px;
+        transform: rotate(-45deg);
+    }
+
+    .active #hmb p {
+        opacity: 0;
+    }
+
+    .active nav {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0); /* 表示時のアニメーション */
+    }
+
+    .active nav ul {
+        opacity: 1;
+        transform: translateY(0); /* 表示時のアニメーション */
+    }
+    #hmb p { 
+        color: white;
+        text-align: center;
+        margin-top: 52px;
+        font-size: 1rem;
+    }
+    nav {
+        position: fixed; /* スクロールしても画面固定 */
+        top: 0;
+        right: 0;
+        width: 100%; 
+        max-width: 100%; 
+        height: 100%; /* 画面に対して100% */
+        display: grid; /* flexだとに分割されるのでgridで一つの箱に */
+        justify-items: first baseline;
+        align-items: end; /* 縦方向中央揃え */
+        background-color: black; 
+        padding: 100px;
+        z-index: 20;
+        opacity: 0; /* 初期状態は透明 */
+        visibility: hidden; /* 初期状態は非表示 */
+        transition-property: opacity, visibility;
+        transition-duration: 0.4s;
+        transition-timing-function: ease-out;
+    }
+    nav ul {
+        opacity: 0; /* 初期状態は透明 */
+        transform: translateY(50px); /* 下から上に移動するアニメーション */
+        transition: opacity 1s ease, transform 1s ease; /* アニメーションの設定 */
+    }
+    nav ul li a {
+        font-size: 70px;
+        font-family: var(--subfont);
+        font-weight: 400;
+        text-decoration: none;
+        transition: color 0.2s ease; /* リンクの色の変化のアニメーション */
+    }
+
+    nav ul p {
+        font-size: 30px;
+        font-family: var(--mainfont);
+        font-weight: 300;
+    }
+}
+
+main {
+    grid-area: main;
+    background-color: lightgray;
 }
