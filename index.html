@@ -26,13 +26,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <aside>
-        <img class="aikon" src="./assets/image/aikon.svg">
+    <aside id="content">
+        <div id="loading-screen">
+            <div class="spinner"></div>
+        </div>    
+        <div id="white-screen"></div>
+        <a oneclick="reloadPage()" class="reload">
+            <img class="aikon" src="./assets/image/aikon.svg">
+        </a>
         <div id="hmb">
             <span></span>
             <span></span>
             <span></span>
-
         </div>
         <nav>
             <ul>
@@ -44,9 +49,36 @@
                 <p>作ったもの</p>
             </ul>
         </nav>
+        <div>
+            <ul class="social">
+                <li class="social-items">
+                    <a href="https://www.instagram.com/hiro.u_1610/">
+                        <img src="./assets/image/aikon.svg" alt="Instagram">
+                    </a>
+                </li>
+                <li class="social-items">
+                    <a href="https://note.com/hiro_u1610">
+                        <img src="./assets/image/aikon.svg" alt="Note">
+                    </a>
+                </li>
+                <li class="social-items">
+                    <a href="mailto:x23016xx@aitech.ac.jp">
+                        <img src="./assets/image/aikon.svg" alt="Email">
+                    </a>
+                </li>
+            </ul>
+        </div>  
     </aside>
     <main>
         <!-- メインコンテンツ -->
+        <div class="content">
+            <div class="top">aaa</div>                    
+            <div id="about" class="items">aaa</div>
+            <div id="skills" class="items">aaa</div>
+            <div id="works" class="items">aaa</div>
+            <div id="contact" class="items">aaa</div>
+        </div>
+
     </main>
 </body>
 </html>
