@@ -23,7 +23,8 @@ body {
     grid-template-areas: 
         "aside main"
         "aside fooder";
-    height: 500vh;
+    
+    max-height: 100%;
     background-color: var(--bg-color);
     color: var(--font-black);
     font-family: var(--sub-font);
@@ -276,14 +277,12 @@ main {
 }
 .content {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: 
     "top"
     "about"
     "skills"
     "works"
     "contact";
-    height: 500vh;
 }
 
 .top {
@@ -291,6 +290,7 @@ main {
     flex-direction: column;
     justify-content: center;
     background-color: var(--bg-white);
+    height: 100vh;
 }
 
 .image-wrapper {
@@ -315,21 +315,81 @@ main {
 /* メインコンテンツ */
 h1 {
     font-family: var(--mainfont);
-    font-size: 5vw;
-    font-family: 300;
+    font-size: 4vw;
+    font-weight: 400;
+    margin: 8vh 0 0vh 10vw;
 }
 .items {
-    display: flex;
-    flex-direction: column;
     margin: 7vh 4vw;
+    height: 50vw;
     background-color: var(--bg-white);
 }
 
+#about {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 1fr 3fr;
+    grid-template-areas: 
+    "head head"
+    "my-image my-profile";
+    height: 50vw;
+    max-height: 1000px;
+    max-width: 1600px;
+}
+
+.head {
+    grid-area: head;
+}
+
+.items-container {
+    display: contents;
+}
 
 
+.items-container img {
+    filter: grayscale(100%);
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+    width: 20vw;
+    max-width: 400px;
+    height: auto;
+    position: relative;
+    left: 25%;
+}
+
+.items-container .my-profile {
+    grid-area: my-profile;
+    display: flex;
+    flex-direction: column;
+}
+.items-container .name {
+    margin: 13% 3vw 0 3vw;
+    font-size: clamp(1.3rem, 1.6vw, 2.3rem);
+}
+.items-container .data {
+    margin: 7% 3vw;
+    font-size: clamp(0.5rem, 1.1vw, 1.4rem);
+    font-family: var(--subfont);
+    line-height: 3vw;
+}
+.items-container .button {
+    text-align: end;
+    margin-right: 20%;
+    font-size: clamp(1rem, 1.3vw, 1.7rem);
+    font-family: var(--mainfont);
+}
+.items-container .button a {
+    text-underline-offset: 1vh;
+    text-decoration-thickness: 1px;
+    color: var(--font-black);
+}
 
 /* フッター */
 footer {
-    height: 100px;
+    position: relative;
+    bottom: 0;
+    height: 5vw;
     background-color: var(--bg-black);
 }
+
+
+
