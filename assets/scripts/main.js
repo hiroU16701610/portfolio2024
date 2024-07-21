@@ -2,10 +2,49 @@
 document.addEventListener("DOMContentLoaded", function() {
     const hamburgerMenu = document.querySelector('#hmb');
     const body = document.body;
+    const spans = document.querySelectorAll('#hmb span');
 
     hamburgerMenu.addEventListener('click', function() {
         body.classList.toggle('active');
+
+        // スパン要素の色を白色にする（クリック時）
+        if (body.classList.contains('active')) {
+            spans.forEach(span => {
+                span.style.backgroundColor = 'var(--hmb-white)';
+            });
+        } else {
+            spans.forEach(span => {
+                span.style.backgroundColor = 'var(--hmb-gray)';
+            });
+        }
     });
+    function updateHamburgerColor() {
+        const hmb = document.getElementById('hmb');
+        const spans = hmb.getElementsByTagName('span');
+
+        // 現在のスクロール位置における背景色を取得
+        const backgroundColor = window.getComputedStyle(document.elementFromPoint(hmb.getBoundingClientRect().left, hmb.getBoundingClientRect().top)).backgroundColor;
+
+        // CSS変数を使用して色を設定
+        const isBlackBackground = backgroundColor === 'rgb(0, 0, 0)';
+        const isWhiteBackground = backgroundColor === 'rgb(255, 255, 255)';
+
+        for (let i = 0; i < spans.length; i++) {
+            if (isBlackBackground) {
+                spans[i].style.backgroundColor = 'var(--hmb-white)';
+            } else if (isWhiteBackground) {
+                spans[i].style.backgroundColor = 'var(--hmb-gray)';
+            } else {
+                spans[i].style.backgroundColor = 'var(--hmb-gray)';
+            }
+        }
+    }
+
+    // スクロールイベントを監視して色を更新
+    window.addEventListener('scroll', updateHamburgerColor);
+
+    // 初期化時に色を設定する
+    updateHamburgerColor();
 });
 
 
