@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" data-name=" レイヤー 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 718 300">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 151.7px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #000;
+        font-family: TiroKannada, 'Tiro Kannada';
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        isolation: isolate;
+      }
+
+      .cls-2 {
+        font-size: 45.9px;
+      }
+    </style>
+  </defs>
+  <g class="cls-3">
+    <g class="cls-3">
+      <text class="cls-1" transform="translate(76.7 160.3)"><tspan x="0" y="0">Portfolio</tspan></text>
+    </g>
+  </g>
+  <g class="cls-3">
+    <g class="cls-3">
+      <text class="cls-2" transform="translate(286.9 226.4)"><tspan x="0" y="0">MADE BY HIROTO</tspan></text>
+    </g>
+  </g>
+</svg>
