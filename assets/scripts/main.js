@@ -49,12 +49,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // リロード
+function reloadPage() {
+    const loadingScreen = document.getElementById('loading-screen');
+    loadingScreen.style.display = 'flex'; // ローディングスクリーンを表示する
+    setTimeout(function() {
+        window.location.reload(true); // 画面をリロードする
+    }, 1000); // アニメーションを表示するための遅延を設定
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const aikonElement = document.querySelector('.aikon');
     const loadingScreen = document.getElementById('loading-screen');
     const whiteScreen = document.getElementById('white-screen');
-    const content = document.getElementById('content');
-
+    const content = document.getElementById('body');
+    
+    //アイコン 
     if (aikonElement) {
         aikonElement.addEventListener('click', function(event) {
             event.preventDefault(); // デフォルトのリンク動作を無効にする
@@ -68,6 +77,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // beforeunloadイベントリスナーを追加
     window.addEventListener('beforeunload', function(event) {
         loadingScreen.style.display = 'flex'; // ローディングスクリーンを表示する
+        window.scrollTo(0, 0); // ページの一番上にスクロール
+    });
+
+    // popstateイベントリスナーを追加
+    window.addEventListener('popstate', function(event) {
+        loadingScreen.style.display = 'flex'; // ローディングスクリーンを表示する
+        window.scrollTo(0, 0); // ページの一番上にスクロール
+        setTimeout(function() {
+            window.location.reload(true); // 画面をリロードする
+        }, 1000); // アニメーションを表示するための遅延を設定
     });
 
     window.addEventListener('load', function() {
@@ -84,5 +103,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 content.classList.add('show');
             }
         }, 1000); // 1秒後に白い画面を非表示にする
+    });
+
+    // 初回ロード時に履歴に状態を追加
+    history.replaceState({page: 1}, document.title, window.location.href);
+});
+
+// svg白
+document.addEventListener('DOMContentLoaded', function () {
+    const hmb = document.getElementById('hmb');
+    const nav = document.querySelector('nav');
+    const instagramIcon = document.getElementById('instagram-icon');
+    const noteIcon = document.getElementById('note-icon');
+    const mailIcon = document.getElementById('mail-icon');
+    const Aikon = document.getElementById('aikon');
+
+    hmb.addEventListener('click', function () {
+        hmb.classList.toggle('active');
+        nav.classList.toggle('active');
+
+        // SVGアイコンの切り替え
+        if (hmb.classList.contains('active')) {
+            instagramIcon.src = './assets/image/instagram-white.svg';
+            noteIcon.src = './assets/image/note-white.svg';
+            mailIcon.src = './assets/image/mail-white.svg';
+            Aikon.src = './assets/image/aikon-white.svg';
+        } else {
+            instagramIcon.src = './assets/image/instagram.svg';
+            noteIcon.src = './assets/image/note.svg';
+            mailIcon.src = './assets/image/mail.svg';
+            Aikon.src = './assets/image/aikon.svg';
+        }
     });
 });

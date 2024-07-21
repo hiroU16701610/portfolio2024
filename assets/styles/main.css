@@ -21,25 +21,26 @@ body {
     display: grid;
     grid-template-columns: 250px 1fr;
     grid-template-areas: 
-        "aside main";
-    height: 1000vh;
+        "aside main"
+        "aside fooder";
+    height: 500vh;
     background-color: var(--bg-color);
     color: var(--font-black);
     font-family: var(--sub-font);
     line-height: 1;
+    opacity: 0;
+    transition: opacity 1s ease;
 }
-
+#body.show {
+    opacity: 1;
+}
 
 #content {
     grid-area: aside;
     background-color: var(--aside);
-    opacity: 0;
-    transition: opacity 1s ease;
 }
 
-#content.show {
-    opacity: 1;
-}
+
 /* ローディングスクリーンのスタイル */
 #loading-screen {
     position: fixed;
@@ -124,7 +125,8 @@ nav ul li {
 .social {
     display: flex;
     position: relative;
-    left: 10%;
+    margin-top:50px;
+    gap: 5px;
 }
 .social-items {
     list-style: none;
@@ -136,7 +138,7 @@ nav ul li {
     height: 100%;
 }
 .social-items img {
-    width: 60px; /* 画像の幅をビューポート幅の10%に設定 */
+    width: 40px; /* 画像の幅をビューポート幅の10%に設定 */
     height: auto; /* 高さを自動調整 */
 }
 
@@ -152,20 +154,21 @@ nav ul li {
     .aikon {
         width: 14vw;
         height: 14vw;
-        margin: 45px;
+        margin: 20px;
     }
     #hmb {
         position: fixed;
-        top: 5vh;
-        right: 130px;
+        top: 0;
+        right: 75px;
+        margin: 5vw;
         display: block;
         cursor: pointer; /* 指マークになる */
         z-index: 30;
     }
     
     #hmb span {
-        width: 50px;
-        height: 5px;
+        width: 40px;
+        height: 4px;
         display: block;
         margin: 12px 16px;
         position: absolute;
@@ -229,7 +232,6 @@ nav ul li {
         justify-items: first baseline;
         align-items: end; /* 縦方向中央揃え */
         background-color: black; 
-        padding: 100px;
         z-index: 20;
         opacity: 0; /* 初期状態は透明 */
         visibility: hidden; /* 初期状態は非表示 */
@@ -238,15 +240,15 @@ nav ul li {
         transition-timing-function: ease-out;
     }
     nav ul {
-        position: relative;
-        top: 0;
-        left: 0;
+        position: absolute;
+        left: 10%;
+        text-align: left;
         opacity: 0; /* 初期状態は透明 */
         transform: translateY(50px); /* 下から上に移動するアニメーション */
         transition: opacity 1s ease, transform 1s ease; /* アニメーションの設定 */
     }
     .menu li a {
-        font-size: 70px;
+        font-size: 10vw;
         font-family: var(--mainfont);
         font-weight: 400;
         text-decoration: none;
@@ -254,12 +256,17 @@ nav ul li {
     }
 
     .menu p {
-        font-size: 30px;
+        padding-left: 10vw;
+        padding-bottom: 5vh;
+        font-size: 4vw;
         font-family: var(--subfont);
         font-weight: 300;
     }
+    .social-items {
+        width: 8vw;
+    }
     .social-items img {
-        width: 100px;
+        width: 8vw;
         height: auto;
     }
 }
@@ -305,7 +312,24 @@ main {
 
 
 
+/* メインコンテンツ */
+h1 {
+    font-family: var(--mainfont);
+    font-size: 5vw;
+    font-family: 300;
+}
 .items {
+    display: flex;
+    flex-direction: column;
     margin: 7vh 4vw;
+    background-color: var(--bg-white);
+}
+
+
+
+
+/* フッター */
+footer {
+    height: 100px;
     background-color: var(--bg-black);
 }
