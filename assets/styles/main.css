@@ -475,6 +475,54 @@ h1 {
 .work-sub {
     font-size: clamp(1.3rem, 1.8vw, 1.8vw);
 }
+
+
+/* コンタクト */
+#contact {
+    height: 25vw;
+}
+.contact-method {
+    margin: 5vw 0;
+    font-size: 5vw;
+    text-align: center;
+}
+
+
+.contact-mail {
+    font-family: var(--mainfont);
+    text-decoration: none;
+    color: var(--font-black);
+    position: relative;
+    transition: color 0.4s, text-shadow 0.4s;
+}
+
+.contact-mail::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* アンダーラインの位置を調整 */
+    width: 100%;
+    height: 2px; /* アンダーラインの太さを調整 */
+    background-color: var(--bg-black);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s 0.1s; /* 0.4秒の遅延を設定 */
+}
+
+.contact-mail:hover {
+    color: var(--bg-white);
+    text-shadow: 
+            -3px -3px 0 var(--font-black),  /* 左上の影 */
+             3px -3px 0 var(--font-black),  /* 右上の影 */
+            -3px  3px 0 var(--font-black),  /* 左下の影 */
+             3px  3px 0 var(--font-black);  /* 右下の影 */
+}
+
+.contact-mail:hover::after {
+    transform: scaleX(1);
+}
+
+
 /* フッター */
 footer {
     position: relative;

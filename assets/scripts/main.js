@@ -50,44 +50,47 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // リロード
 function reloadPage() {
+    // ローディングスクリーンを表示し、ページのトップにスクロール
     const loadingScreen = document.getElementById('loading-screen');
     loadingScreen.style.display = 'flex'; // ローディングスクリーンを表示する
+    window.scrollTo(0, 0); // ページのトップにスクロール
+    
+    // リロードを遅延させてローディングスクリーンが表示される時間を確保
     setTimeout(function() {
-        window.location.reload(true); // 画面をリロードする
-    }, 1000); // アニメーションを表示するための遅延を設定
+        window.location.reload(); // 画面をリロードする
+    }, 500); // 適切な遅延を設定
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     const aikonElement = document.querySelector('.aikon');
+    const reloadButton = document.getElementById('reload');
     const loadingScreen = document.getElementById('loading-screen');
     const whiteScreen = document.getElementById('white-screen');
     const content = document.getElementById('body');
-    
-    //アイコン 
+
+    // アイコンクリック時の処理
     if (aikonElement) {
         aikonElement.addEventListener('click', function(event) {
             event.preventDefault(); // デフォルトのリンク動作を無効にする
-            loadingScreen.style.display = 'flex'; // ローディングスクリーンを表示する
-            setTimeout(function() {
-                window.location.reload(true); // 画面をリロードする
-            }, 1000); // アニメーションを表示するための遅延を設定（ここでは2000ミリ秒）
+            reloadPage(); // リロード関数を呼び出す
         });
     }
 
-    // beforeunloadイベントリスナーを追加
-    window.addEventListener('beforeunload', function(event) {
+    // リロードボタンクリック時の処理
+    if (reloadButton) {
+        reloadButton.addEventListener('click', function(event) {
+            event.preventDefault(); // デフォルトのリンク動作を無効にする
+            reloadPage(); // リロード関数を呼び出す
+        });
+    }
+
+    // windowリサイズ時のイベントリスナーを削除
+    window.removeEventListener('beforeunload', function(event) {
         loadingScreen.style.display = 'flex'; // ローディングスクリーンを表示する
-        window.scrollTo(0, 0); // ページの一番上にスクロール
     });
 
-    // popstateイベントリスナーを追加
-    window.addEventListener('popstate', function(event) {
-        loadingScreen.style.display = 'flex'; // ローディングスクリーンを表示する
-        window.scrollTo(0, 0); // ページの一番上にスクロール
-        setTimeout(function() {
-            window.location.reload(true); // 画面をリロードする
-        }, 1000); // アニメーションを表示するための遅延を設定
-    });
+    // 初回ロード時に履歴に状態を追加
+    history.replaceState({page: 1}, document.title, window.location.href);
 
     window.addEventListener('load', function() {
         whiteScreen.style.display = 'block';
@@ -104,10 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 1000); // 1秒後に白い画面を非表示にする
     });
-
-    // 初回ロード時に履歴に状態を追加
-    history.replaceState({page: 1}, document.title, window.location.href);
 });
+
 
 // svg白
 document.addEventListener('DOMContentLoaded', function () {
@@ -136,3 +137,34 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// スライドさせる
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('nav a');
+
+    // スムーズスクロールの設定
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            // href属性の値
+            const href = this.getAttribute('href');
+            
+            // 外部リンクの場合はスムーズスクロールを適用せず、デフォルト動作を許可
+            if (href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) {
+                return;
+            }
+
+            event.preventDefault(); // デフォルトの動作を無効にする
+
+            const targetId = href.substring(1); // href属性からIDを取得
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop, // 目標要素の位置までスクロール
+                    behavior: 'smooth' // スムーズスクロール
+                });
+            }
+        });
+    });
+});
+
