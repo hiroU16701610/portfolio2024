@@ -94,9 +94,6 @@ body {
     position: fixed;
     width: 12vw;
     height: auto;
-    min-width: 200px;
-    min-height: 200px;
-    margin: 20px;
     z-index: 1000;
     cursor: pointer;
 }
@@ -115,13 +112,13 @@ nav ul li {
 .menu li a {
     color: var(--font-white);
     display: block;
-    font-size: clamp(30px, 3vw, 3vw);
+    font-size: 3vw;
     padding: 10px;
     text-decoration-thickness: 1px; /* 下線の太さを指定 */
     text-underline-offset: 5px;
 }
 .menu p {
-    font-size: clamp(15px, 1.5vw, 1.5vw);
+    font-size: 1.5vw;
     color: var(--font-white);
     padding-bottom: 5vh;
 }
@@ -130,12 +127,12 @@ nav ul li {
     display: flex;
     position: relative;
     margin-top: 3vw;
+    margin-left: 1vw;  
     gap: 5px;
 }
 .social-items {
     list-style: none;
     width: 3vw; /* 固定幅 */
-    min-width: 60px;
     height: 100px; /* 固定高さ */
 }
 .social-items a {
