@@ -23,7 +23,7 @@
 
 body {
     display: grid;
-    grid-template-columns: 1fr 7fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas: 
         "aside main"
         "aside fooder";
@@ -98,7 +98,7 @@ body {
 .aikon {
     display: flex;
     position: fixed;
-    width: 12vw;
+    width: 11.5vw;
     height: auto;
     z-index: 1000;
     cursor: pointer;
@@ -134,7 +134,6 @@ body {
     position: relative;
     margin-top: 3vw;
     margin-left: 1vw;  
-    gap: 5px;
 }
 .social-items {
     list-style: none;

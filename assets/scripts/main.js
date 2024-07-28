@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         spans.forEach(span => {
             if (isBlackBackground) {
                 span.style.backgroundColor = 'var(--hmb-white)';
-                icon.src = './assets/image/aikon-white.svg'; // アイコンの画像を変更
+                icon.src = '/assets/image/aikon-white.svg'; // アイコンの画像を変更
             } else if (isWhiteBackground) {
                 span.style.backgroundColor = 'var(--hmb-gray)';
                 icon.src = './assets/image/aikon.svg'; // 元のアイコンの画像に戻す
