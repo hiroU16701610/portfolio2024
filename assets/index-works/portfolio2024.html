@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +12,92 @@
     <meta property="og:image:width" content="1920">
     <meta property="og:image:height" content="1080">
 
-    <link rel="stylesheet" href="/portfolio/assets/styles/works.css">
+    <link rel="stylesheet" href="/portfolio2024/assets/styles/common.css">
+    <link rel="stylesheet" href="/portfolio2024/assets/styles/works.css">
+    <script src="/portfolio2024/assets/scripts/main.js" defer></script>
+    <title>YSKポートフォリオについて</title>
 
-    <title>Document</title>
+     <!-- fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
-<body>
-    aaaa
+<body id="body">
+    <aside id="content">
+        <div id="loading-screen">
+            <div class="spinner"></div>
+        </div>    
+        <div id="white-screen"></div>
+        <a oneclick="reloadPage()" class="reload">
+            <img id="aikon" class="aikon" src="/portfolio2024/assets/image/aikon.svg">
+        </a>
+        <div id="hmb">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="aside-nav">
+            <ul>
+                <div class="menu">
+                    <li><a href="/portfolio2024/index.html">About</a></li>
+                    <p>私について</p>
+                    <li><a href="https://hirou16701610.github.io/portfolio2024/">Skills</a></li>
+                    <p>できること</p>
+                    <li><a href="https://hirou16701610.github.io/portfolio2024/">Works</a></li>
+                    <p>作ったもの</p>
+                </div>
+                <div class="social">
+                    <li class="social-items">
+                        <a href="https://www.instagram.com/hiro.u_1610/">
+                            <img id="instagram-icon" src="/portfolio2024/assets/image/instagram.svg" alt="Instagram">
+                        </a>
+                    </li>
+                    <li class="social-items">
+                        <a href="https://note.com/hiro_u1610">
+                            <img id="note-icon" src="/portfolio2024/assets/image/note.svg" alt="Note">
+                        </a>
+                    </li>
+                    <li class="social-items">
+                        <a href="mailto:x23016xx@aitech.ac.jp">
+                            <img id="mail-icon" src="/portfolio2024/assets/image/mail.svg" alt="Email">
+                        </a>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+        
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="copyright">All Rights Reserved 2024 © Hiroto Uchiyashiki</div>
+            <nav class="footer-nav">
+                <ul>
+                    <li class="footer-SNS">
+                        <a href="https://www.instagram.com/hiro.u_1610/">
+                            <img id="instagram-icon" src="/portfolio2024/assets/image/instagram-white.svg" alt="Instagram">
+                        </a>
+                    </li>
+                    <li class="footer-SNS">
+                        <a href="https://note.com/hiro_u1610">
+                            <img id="note-icon" src="/portfolio2024/assets/image/note-white.svg" alt="Note">
+                        </a>
+                    </li>
+                    <li class="footer-SNS">
+                        <a href="mailto:x23016xx@aitech.ac.jp">
+                            <img id="mail-icon" src="/portfolio2024/assets/image/mail-white.svg" alt="Email">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="go-top">
+                <a href="#">Back to Top</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
