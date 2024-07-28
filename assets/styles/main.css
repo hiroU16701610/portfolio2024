@@ -7,7 +7,9 @@
 :root {
     --mainfont: "Noto Serif", serif;
     --subfont: "Noto Sans JP", sans-serif;
-    --bg-color: lightgray;
+    
+    --square-color: rgb(255, 255, 255);
+    --bg-color: rgb(228, 228, 228);
     --bg-black: black;
     --bg-white: white;
     --aside:  rgb(160, 160, 160);
@@ -32,6 +34,9 @@ body {
     line-height: 1;
     opacity: 0;
     transition: opacity 1s ease;
+    background-image:  linear-gradient(var(--square-color) 4px, transparent 4px), linear-gradient(90deg, var(--square-color) 4px, transparent 4px), linear-gradient(var(--square-color) 2px, transparent 2px), linear-gradient(90deg, var(--square-color) 2px, var(--bg-color) 2px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position: -4px -4px, -4px -4px, -2px -2px, -2px -2px;
 }
 
 #body.show {
@@ -149,11 +154,12 @@ body {
 /* ハンバーガーメニュー */
 @media (max-width: 1100px) {
     body {
-        grid-template-rows: auto 1fr;
+        grid-template-rows: auto 1fr 10vh;
         grid-template-columns: 1fr;
         grid-template-areas: 
             "aside"
-            "main";
+            "main"
+            "footer";
     }
     .aikon {
         width: 60px;
@@ -387,6 +393,12 @@ h1 {
     text-underline-offset: 1vh;
     text-decoration-thickness: 1px;
     color: var(--font-black);
+    transition: font-size 0.3s ease;
+}
+@media (min-width: 1101px) {
+    .items-container .button a:hover {
+        font-size: clamp(0.8rem, 1.4vw, 1.4vw);
+    } 
 }
 @media (max-width: 1100px) {
     #about {
@@ -530,6 +542,12 @@ h1 {
     width: 30vw;
     height: auto;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-out;
+}
+@media (min-width:1101px) {
+    .work-img:hover {    
+        transform: scale(1.1);
+    }
 }
 .work-main {
     font-size: clamp(1.3rem, 1.2vw, 1.2vw);
@@ -607,31 +625,34 @@ h1 {
     transition: color 0.4s, text-shadow 0.4s;
 }
 
-.contact-mail::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px; /* アンダーラインの位置を調整 */
-    width: 100%;
-    height: 2px; /* アンダーラインの太さを調整 */
-    background-color: var(--bg-black);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s 0.1s; /* 0.4秒の遅延を設定 */
+@media (min-width: 1101px) {
+    .contact-mail::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px; /* アンダーラインの位置を調整 */
+        width: 100%;
+        height: 2px; /* アンダーラインの太さを調整 */
+        background-color: var(--bg-black);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s 0.1s; /* 0.4秒の遅延を設定 */
+    }
+    
+    .contact-mail:hover {
+        color: var(--bg-white);
+        text-shadow: 
+                -3px -3px 0 var(--font-black),  /* 左上の影 */
+                 3px -3px 0 var(--font-black),  /* 右上の影 */
+                -3px  3px 0 var(--font-black),  /* 左下の影 */
+                 3px  3px 0 var(--font-black);  /* 右下の影 */
+    }
+    
+    .contact-mail:hover::after {
+        transform: scaleX(1);
+    }    
 }
 
-.contact-mail:hover {
-    color: var(--bg-white);
-    text-shadow: 
-            -3px -3px 0 var(--font-black),  /* 左上の影 */
-             3px -3px 0 var(--font-black),  /* 右上の影 */
-            -3px  3px 0 var(--font-black),  /* 左下の影 */
-             3px  3px 0 var(--font-black);  /* 右下の影 */
-}
-
-.contact-mail:hover::after {
-    transform: scaleX(1);
-}
 @media (max-width: 1100px) {
     #contact {
         height: 40vw;
@@ -670,35 +691,50 @@ footer {
     position: relative;
 }
 
-.go-top a::after {
-    content: ''; 
-    position: absolute; 
-    left: 0; 
-    bottom: 0;
-    width: 0;  /* 初期値は0 */
-    height: 2px;
-    background-color: var(--font-white);
-    transition: width 0.3s ease;  /* 幅をアニメーションさせる */
+@media (min-width:1101px) {
+    .go-top a::after {
+        content: ''; 
+        position: absolute; 
+        left: 0; 
+        bottom: 0;
+        width: 0;  /* 初期値は0 */
+        height: 2px;
+        background-color: var(--font-white);
+        transition: width 0.3s ease;  /* 幅をアニメーションさせる */
+    }
+    
+    .go-top a:hover::after {
+        width: 100%;  /* ホバー時に幅を100%に */
+    }   
 }
-
-.go-top a:hover::after {
-    width: 100%;  /* ホバー時に幅を100%に */
-}
-
 
 @media (max-width:1100px) {
+    footer {
+        height: 20vh;
+    }
+    .footer-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+        "footer-nav go-top"
+        "copyright copyright";
+    }
     .footer-nav {
+        grid-area: footer-nav;
         position: relative;
         gap: 5px;
         display: inline;
+        margin: 5vh 0 2vh 0;
     }
     .footer-nav ul {
         display: flex;
         gap: 2vw;
+        justify-content: center;
     }
     .footer-SNS {
         list-style: none;
-        width: 1vw; /* 固定幅 */
+        width: 5vw; /* 固定幅 */
         height: auto; /* 固定高さ */
     }
     .footer-SNS a {
@@ -706,8 +742,20 @@ footer {
         height: 100%;
     }
     .footer-SNS img {
-        width: 1vw; /* 画像の幅をビューポート幅の10%に設定 */
+        width: 3vh; /* 画像の幅をビューポート幅の10%に設定 */
         min-width: 10px;
         height: auto; /* 高さを自動調整 */
+    }
+    .copyright {
+        grid-area: copyright;
+        text-align: center;
+        margin: 5vh 0 2vh 0;
+        font-size: 1vh;
+    }
+    .go-top {
+        grid-area: go-top;
+        text-align: center;
+        font-size: 1.5vh;
+        padding-top: 2.5vh;
     }
 }
