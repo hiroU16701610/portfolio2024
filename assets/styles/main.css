@@ -18,6 +18,7 @@
     --column-width: 7fr;
 }
 
+
 body {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -155,10 +156,9 @@ body {
             "main";
     }
     .aikon {
-        width: 14vw;
-        height: 14vw;
-        min-width: auto;
-        min-height: auto;
+        width: 60px;
+        height: auto;
+        margin: 5%;
     }
     #hmb {
         position: fixed;
@@ -330,8 +330,11 @@ h1 {
     height: 50vw;
     background-color: var(--bg-white);
 }
-
-
+@media (max-width: 1100px) {
+    h1 {
+        font-size: 8vw;
+    }
+}
 /* 私について */
 #about {
     display: grid;
@@ -342,7 +345,6 @@ h1 {
     "my-image my-profile";
     height: 50vw;
 }
-
 .head {
     grid-area: head;
 }
@@ -350,7 +352,6 @@ h1 {
 .items-container {
     display: contents;
 }
-
 
 .items-container .my-image {
     filter: grayscale(100%);
@@ -368,18 +369,18 @@ h1 {
 }
 .items-container .name {
     margin: 13% 3vw 0 3vw;
-    font-size: clamp(1.3rem, 1.6vw, 1.6vw);
+    font-size: clamp(1rem, 1.6vw, 1.6vw);
 }
 .items-container .data {
     margin: 7% 3vw;
-    font-size: clamp(0.5rem, 1.1vw, 1.1vw);
+    font-size: clamp(0.8rem, 1.1vw, 1.1vw);
     font-family: var(--subfont);
     line-height: 3vw;
 }
 .items-container .button {
     text-align: end;
     margin-right: 20%;
-    font-size: clamp(1rem, 1.3vw, 1.3vw);
+    font-size: clamp(0.8rem, 1.3vw, 1.3vw);
     font-family: var(--mainfont);
 }
 .items-container .button a {
@@ -387,7 +388,42 @@ h1 {
     text-decoration-thickness: 1px;
     color: var(--font-black);
 }
-
+@media (max-width: 1100px) {
+    #about {
+        display: flex;
+        flex-direction: column;
+        height: 105vh;
+        max-height: 1450px;
+    }
+    .items-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center; 
+    }
+    .items-container .my-image {
+        width: 35vw;
+        min-width: 200px;
+        left: 0;
+        margin-top: 5%;
+    }
+    .items-container .name {
+        font-size: clamp(1rem, 3vw, 3vw);
+        text-align: center;
+    }
+    .items-container .data {
+        line-height: 6vw;
+        margin: 7% 5vw;
+        font-size: clamp(0.8rem, 2vw, 2vw);
+    }
+    .items-container .data br {
+        display: none;
+    }
+    .items-container .button {
+        margin-right: 10%;
+        font-size: clamp(0.8rem, 2vw, 2vw);
+    }
+}
 
 /* できること */
 #skills {
@@ -412,7 +448,6 @@ h1 {
     grid-template-areas: "skill-head skill-container";
     margin: 2vw 5vw 0 15vw;
 }
-
 .skill-main {
     font-size: clamp(1.3rem, 2.5vw, 2.5vw);
     font-family: var(--mainfont);
@@ -429,7 +464,32 @@ h1 {
     padding-top: 3vw;
     line-height: 3vw;
 }
-
+@media (max-width: 1100px) {
+    #skills {
+        height: 115vh;
+    }
+    .myskill-1, .myskill-2, .myskill-3 {
+        grid-template-rows: 1fr 4fr;
+        grid-template-columns: none;
+        grid-template-areas:    
+        "skill-head" 
+        "skill-container";
+        height: 30vh;
+    }
+    .skill-main {
+        font-size: clamp(1.3rem, 5vw, 5vw);
+        text-decoration-thickness: 1px;
+        padding-bottom: 10px;
+    }
+    .skill-sub {
+        font-size: clamp(0.6rem, 2vw, 2vw);
+    }
+    .skill-container {
+        font-size: clamp(01rem, 3vw, 3vw);
+        padding-top: 3vw;
+        line-height: 6vw;
+    }
+}
 
 /* 作ったもの */
 #works {
@@ -443,6 +503,11 @@ h1 {
     "mywork-4 mywork-3"
     "mywork-2 mywork-1";
     height: 55vw;
+    list-style-type: none;
+}
+.my-works a {
+    text-decoration: none;
+    color: var(--font-black);
 }
 .mywork-1 {
     grid-area: mywork-1;
@@ -473,7 +538,55 @@ h1 {
 .work-sub {
     font-size: clamp(1.3rem, 1.8vw, 1.8vw);
 }
+@media (max-width: 1100px) {
+    #works {
+        height: 210vh;
+    }
+    .my-works {
+        display: grid;
+        grid-template-rows: none;
+        grid-template-columns: none;
+        grid-template-areas: 
+        "mywork-4" 
+        "mywork-3"
+        "mywork-2"
+        "mywork-1";
+        height: 0;
+    }
+    .mywork-1 {
+        grid-area: mywork-1;
+        margin: 3vh 5vw;
+    }
+    .mywork-2 {
+        grid-area: mywork-2;
+        margin: 3vh 5vw;
+    }
+    .mywork-3 {
+        grid-area: mywork-3;
+        margin: 3vh 5vw;
+    }
+    .mywork-4 {
+        grid-area: mywork-4;
+        margin: 3vh 5vw;
+    }
+    
+    .work-img {
+        width: 50vw;
+        min-width: 250px;
+        height: auto;
+        box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+    }
+    .work-main {
+        font-size: clamp(0.7em, 2vw, 2vw);
+        padding: 1.5vh 0 1vh 0;
+        margin: 3vh 0 1vh 0;
+    }
+    .work-sub {
+        font-size: clamp(1rem, 3vw, 3vw);
+        margin-bottom: 5vh;
 
+    }
+}
 
 /* コンタクト */
 #contact {
@@ -519,7 +632,14 @@ h1 {
 .contact-mail:hover::after {
     transform: scaleX(1);
 }
-
+@media (max-width: 1100px) {
+    #contact {
+        height: 40vw;
+    }
+    #contact h1 {
+        margin: 4vh 0 4vh 10vw;
+    }
+}
 
 /* フッター */
 footer {
@@ -544,10 +664,27 @@ footer {
     color: gray;
 }
 
-
 .go-top a {
     color: var(--font-white);
+    text-decoration: none;
+    position: relative;
 }
+
+.go-top a::after {
+    content: ''; 
+    position: absolute; 
+    left: 0; 
+    bottom: 0;
+    width: 0;  /* 初期値は0 */
+    height: 2px;
+    background-color: var(--font-white);
+    transition: width 0.3s ease;  /* 幅をアニメーションさせる */
+}
+
+.go-top a:hover::after {
+    width: 100%;  /* ホバー時に幅を100%に */
+}
+
 
 @media (max-width:1100px) {
     .footer-nav {

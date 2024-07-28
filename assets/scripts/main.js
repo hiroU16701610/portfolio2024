@@ -1,8 +1,8 @@
-// ハンバーガーメニュー
 document.addEventListener("DOMContentLoaded", function() {
     const hamburgerMenu = document.querySelector('#hmb');
     const body = document.body;
     const spans = document.querySelectorAll('#hmb span');
+    const icon = document.querySelector('.aikon'); // アイコンの要素を取得
 
     hamburgerMenu.addEventListener('click', function() {
         body.classList.toggle('active');
@@ -18,34 +18,49 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     });
+
     function updateHamburgerColor() {
-        const hmb = document.getElementById('hmb');
-        const spans = hmb.getElementsByTagName('span');
+        const rect = hamburgerMenu.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
 
         // 現在のスクロール位置における背景色を取得
-        const backgroundColor = window.getComputedStyle(document.elementFromPoint(hmb.getBoundingClientRect().left, hmb.getBoundingClientRect().top)).backgroundColor;
+        const elementUnderHamburger = document.elementFromPoint(centerX, centerY);
+        const backgroundColor = window.getComputedStyle(elementUnderHamburger).backgroundColor;
 
         // CSS変数を使用して色を設定
         const isBlackBackground = backgroundColor === 'rgb(0, 0, 0)';
         const isWhiteBackground = backgroundColor === 'rgb(255, 255, 255)';
 
-        for (let i = 0; i < spans.length; i++) {
+        spans.forEach(span => {
             if (isBlackBackground) {
-                spans[i].style.backgroundColor = 'var(--hmb-white)';
+                span.style.backgroundColor = 'var(--hmb-white)';
+                icon.src = './assets/image/aikon-white.svg'; // アイコンの画像を変更
             } else if (isWhiteBackground) {
-                spans[i].style.backgroundColor = 'var(--hmb-gray)';
+                span.style.backgroundColor = 'var(--hmb-gray)';
+                icon.src = './assets/image/aikon.svg'; // 元のアイコンの画像に戻す
             } else {
-                spans[i].style.backgroundColor = 'var(--hmb-gray)';
+                span.style.backgroundColor = 'var(--hmb-gray)';
+                icon.src = './assets/image/aikon.svg'; // 元のアイコンの画像に戻す
             }
-        }
+        });
     }
 
     // スクロールイベントを監視して色を更新
-    window.addEventListener('scroll', updateHamburgerColor);
+    window.addEventListener('scroll', debounce(updateHamburgerColor, 50));
 
     // 初期化時に色を設定する
     updateHamburgerColor();
 });
+
+// デバウンス関数
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
 
 
 // リロード
@@ -167,4 +182,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
